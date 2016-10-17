@@ -15,9 +15,11 @@ void swap(int &a, int &b)
 	b=tmp;
 }
 
-int &fun(int i)
+int arr[5]={1,2,3,4,5};
+int & func(int i)
 {
-	[]
+	return arr[i];
+}
 
 int main()
 {
@@ -26,4 +28,8 @@ int main()
 	swap(a,b);
 	cout << "a= " << a << endl;
 	cout << "b= " << b << endl;
+	for(int i=0;i<5;i++)
+	{
+		cout << arr[i] << endl;
+	}
 }
