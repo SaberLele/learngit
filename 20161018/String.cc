@@ -18,9 +18,26 @@ public:
 	{
 		if(this!=&rhs)
 		{
-			delete [] _pstr;
-			_pstr=new char[strlen(rhs._pstr)+1];
-			strcpy(_pstr,rhs._pstr);
+			#if 0
+			//版本二
+			char *ptmp=new char [strlen(rhs._pstr)+1];
+			if(ptmp)
+			{
+				strcpy(_pstr,rhs._pstr);
+				delete [] _pstr;
+				_pstr=ptmp;
+			}
+			#endif
+			//版本一
+			//delete [] _pstr;
+			//_pstr=new char[strlen(rhs._pstr)+1];//申请空间有异常风险
+			//strcpy(_pstr,rhs._pstr);
+			
+			//版本三,高级版本
+			String tmp(rhs);
+			char * p=_pstr;
+			_pstr=tmp._pstr;
+			tmp._pstr=p;
 		}
 		return *this;
 	}
@@ -32,10 +49,9 @@ private:
 };
 
 String::String()
-:_pstr(new char[strlen("hello")+1])
+:_pstr(new char[1])
 {
 	cout << "String()" << endl;
-	strcpy(_pstr,"hello");
 }
 
 String::String(const char* pstr)
@@ -59,7 +75,10 @@ String::~String()
 
 void String::print()
 {
-	cout << _pstr <<endl;
+	if(_pstr!=NULL)
+	{
+		cout << _pstr <<endl;
+	}
 }
 
 int main()
