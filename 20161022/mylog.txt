@@ -1,0 +1,6 @@
+2016-10-22 00:14:53,583: ERROR  : error test
+2016-10-22 00:18:11,874: ERROR  : error test
+2016-10-22 00:41:37,371: ERROR  : error test
+2016-10-22 00:52:24,989: ERROR  : Error test##test.cc:main:16##
+2016-10-22 00:53:02,476: ERROR  : Error test ## test.cc:main:16 ## 
+2016-10-22 00:54:14,540: ERROR  : Error test ## test.cc:main:16 ## 
