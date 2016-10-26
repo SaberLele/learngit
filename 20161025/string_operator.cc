@@ -185,11 +185,19 @@ std::ostream &operator<<(std::ostream &os, const String &s)
 
 std::istream &operator>>(std::istream &is, String &s)
 {
-	string str;
+//	string str;
+//	delete [] s._pstr;
+//	s._pstr=new char[str.size()+1];
+//	is >> str;
+//	strcpy(s._pstr,str.c_str());
+//	cout << s.size() << endl;
+	char buff[65535];     //最大输入64K
+	bzero(buff,sizeof(buff));
+	is.getline(buff,sizeof(buff));  //考虑空格存在
 	delete [] s._pstr;
-	s._pstr=new char[str.size()+1];
-	is >> str;
-	strcpy(s._pstr,str.c_str());
+	s._pstr=new char[strlen(buff)+1];
+	strcpy(s._pstr,buff);
+
 	return is;
 }
 

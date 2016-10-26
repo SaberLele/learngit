@@ -33,21 +33,19 @@ List * reverse_list(List *phead)
 	return pre;
 }
 
-void addList(List* phead,int a)
+void createList(List* phead)
 {
-	if(phead==NULL)
+	List* p=phead;
+	for(int i=1;i!=10;i++)
 	{
-		return ;
+		List * pNode=new List;
+		pNode->data=i;
+		pNode->next=NULL;
+		p->next=pNode;
+		p=pNode;
 	}
-	while(phead->next)
-	{
-		phead=phead->next;
-	}
-	List* p=new List;
-	p->data=a;
-	p->next=NULL;
-	phead->next=p;
 }
+
 void show(List* phead)
 {
 	while(phead)
@@ -60,15 +58,15 @@ void show(List* phead)
 
 int main()
 {
-	List *phead=new List;
+	List *phead;
+	phead=new List;
+	phead->data=0;
 	phead->next=NULL;
-	addList(phead,1);  
-	addList(phead,2);  
-	addList(phead,3);  
-	addList(phead,4);
+	createList(phead);
 	show(phead);
 	
-	reverse_list(phead);
-	show(phead);
+	List *pre;
+	pre=reverse_list(phead);
+	show(pre);
 	return 0;
 }
