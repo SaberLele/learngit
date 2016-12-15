@@ -29,8 +29,8 @@ struct DerivedTask
 int main()
 {
 	zx::Threadpool threadpool(4,10);
-	DerivedTask dt;
-	shared_ptr<zx::Task> sp(new zx::Task(std::bind(&DerivedTask::execute,&dt)));
+//	DerivedTask dt;
+	shared_ptr<zx::Task> sp(new zx::Task(std::bind(&DerivedTask::execute,DerivedTask())));
 	threadpool.start();
 	int cnt=10;
 	while(cnt>0)

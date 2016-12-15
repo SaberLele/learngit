@@ -36,7 +36,7 @@ namespace zx
 	{
 		for(size_t idx=0;idx!=_threadNum;++idx)
 		{
-			shared_ptr<Thread> sp(new Thread(std::bind(&Threadpool::threadFunc,std::ref(*this))));
+			shared_ptr<Thread> sp(new Thread(std::bind(&Threadpool::threadFunc,this)));
 			_threads.push_back(sp);
 			sp->start();
 		}
